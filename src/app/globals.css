@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --void-00: #030407;
+  --void-01: #06080e;
+  --void-02: #0b0e17;
+  --void-03: #111522;
+  --void-05: rgba(255, 255, 255, 0.08);
+  --void-10: rgba(255, 255, 255, 0.14);
+
+  --ink-primary: #f8fafc;
+  --ink-secondary: #94a3b8;
+  --ink-tertiary: #64748b;
+  --ink-dim: #334155;
+
+  --accent-cyan: #38bdf8;
+  --accent-blue: #0284c7;
+  --accent-purple: #c084fc;
+  --accent-emerald: #34d399;
+  --accent-amber: #fbbf24;
+  --accent-rose: #f43f5e;
+  --accent-border: rgba(56, 189, 248, 0.35);
+
+  --font-display: 'Bricolage Grotesque', -apple-system, sans-serif;
+  --font-body: 'Manrope', -apple-system, sans-serif;
+  --font-accent: 'IBM Plex Mono', monospace;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --nav-height: 72px;
+  --content-max: 1240px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================================
+   1. LANDING COVER VIEW (Dark, Cinematic, Non-Scrollable 100vh Cover)
+   ========================================================================= */
+body {
+  background-color: var(--void-00);
+  color: var(--ink-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+body.landing-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+}
+
+body.landing-locked .app-shell {
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+  padding-bottom: 0 !important;
+}
+
+body.landing-locked .app-footer-auto {
+  display: none !important;
+}
+
+/* Hide navigation links on the landing page cover */
+body.landing-locked .nav-terminal .nav-links {
+  display: none !important;
+}
+
+body.landing-locked .nav-terminal {
+  background: transparent !important;
+  border-bottom: none !important;
+  position: relative !important;
+}
+
+/* PayPer Full-Bleed Background for Landing Cover */
+.global-bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.global-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: all 0.8s var(--ease-out);
+}
+
+.global-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(3, 4, 7, 0) 35%, rgba(3, 4, 7, 0.95) 100%);
+  transition: background 0.8s var(--ease-out);
+}
+
+/* App Shell Container */
+.app-shell {
+  position: relative;
+  z-index: 10;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* Navigation Terminal Header */
+.nav-terminal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.brand-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.brand-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  letter-spacing: 0.08em;
+}
+
+/* Luxury Segmented Pill Navigation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(11, 14, 23, 0.85);
+  padding: 4px;
+  border-radius: 9999px;
+  border: 1px solid var(--void-05);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #94a3b8;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-link-icon {
+  width: 15px;
+  height: 15px;
+  opacity: 0.85;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link:hover .nav-link-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.nav-link.active {
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+  font-weight: 700;
+}
+
+.nav-link.active .nav-link-icon {
+  opacity: 1;
+  color: var(--accent-cyan);
+}
+
+/* Landing Page Hero View */
+.hero-video-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - var(--nav-height) - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible;
+  padding-left: 8px;
+}
+
+.hero-left-content {
+  position: relative;
+  z-index: 10;
+  max-width: 680px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
+.synthora-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.hero-display-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.2vw, 74px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.hero-display-title span {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-lede {
+  font-size: 16px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  max-width: 620px;
+  text-align: left;
+}
+
+/* Translucent Glass Pill CTA Launch Buttons with Hover Zoom */
+.btn-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 34px;
+  border-radius: 9999px;
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(56, 189, 248, 0.38) 45%, rgba(2, 132, 199, 0.48) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 6px 22px rgba(56, 189, 248, 0.4);
+  transition: transform 0.28s var(--ease-out), box-shadow 0.28s var(--ease-out), background 0.28s ease, border-color 0.28s ease;
+  text-decoration: none;
+  transform-origin: center center;
+}
+
+.btn-cta-primary:hover {
+  transform: scale(1.08) translateY(-2px);
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(56, 189, 248, 0.52) 45%, rgba(2, 132, 199, 0.65) 100%);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 12px 36px rgba(56, 189, 248, 0.7),
+    0 0 20px rgba(56, 189, 248, 0.45);
+}
+
+.btn-terminal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid var(--void-05);
+  cursor: pointer;
+  transition: transform 0.25s var(--ease-out), background 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-terminal:hover {
+  transform: scale(1.05);
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.btn-terminal.active {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 100%);
+  color: #030407;
+  font-weight: 700;
+  border: none;
+}
+
+/* =========================================================================
+   2. MAIN APP PAGE (OFF-WHITE ELEGANT LUXURY DASHBOARD)
+   ========================================================================= */
+body.trustward-app-body {
+  background-color: #f6f8fb !important;
+  color: #090d16 !important;
+  background-image: 
+    radial-gradient(circle at 50% -10%, rgba(2, 132, 199, 0.07) 0%, rgba(124, 58, 237, 0.04) 35%, transparent 65%),
+    linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 40px 40px, 40px 40px !important;
+  background-attachment: fixed !important;
+}
+
+/* Completely hide the dark coin gate background on the main app page */
+body.trustward-app-body .global-bg-image {
+  display: none !important;
+}
+
+/* Off-White Frosted Sticky Header Shield to Prevent Text Bleed */
+body.trustward-app-body .nav-terminal {
+  background: rgba(246, 248, 251, 0.92) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
+  padding: 14px 0 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Off-White Header Styling */
+body.trustward-app-body .brand-text {
+  color: #090d16 !important;
+}
+
+/* Off-White Segmented Navigation Pill */
+body.trustward-app-body .nav-links {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 9999px !important;
+  padding: 4px !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03) !important;
+  gap: 4px !important;
+}
+
+body.trustward-app-body .nav-link {
+  color: #64748b !important;
+  padding: 7px 18px !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+}
+
+body.trustward-app-body .nav-link:hover {
+  color: #090d16 !important;
+  background: #f1f5f9 !important;
+}
+
+body.trustward-app-body .nav-link.active {
+  background: #090d16 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 6px rgba(9, 13, 22, 0.18) !important;
+  font-weight: 700 !important;
+}
+
+body.trustward-app-body .nav-link.active .nav-link-icon {
+  color: #38bdf8 !important;
+}
+
+/* Off-White Panels & Cards */
+body.trustward-app-body .panel-glass {
+  background: #ffffff !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  color: #090d16 !important;
+}
+
+body.trustward-app-body .panel-glass:hover {
+  border-color: rgba(2, 132, 199, 0.35) !important;
+  box-shadow: 0 8px 30px rgba(2, 132, 199, 0.08) !important;
+}
+
+body.trustward-app-body .stat-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.03) !important;
+}
+
+body.trustward-app-body .stat-label {
+  color: #64748b !important;
+}
+
+body.trustward-app-body .stat-value {
+  color: #090d16 !important;
+}
+
+body.trustward-app-body .btn-terminal {
+  background: #ffffff !important;
+  color: #334155 !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+body.trustward-app-body .btn-terminal:hover {
+  transform: scale(1.04);
+  background: #f8fafc !important;
+  color: #0284c7 !important;
+  border-color: rgba(2, 132, 199, 0.4) !important;
+}
+
+body.trustward-app-body .btn-terminal.active {
+  background: #090d16 !important;
+  color: #ffffff !important;
+  border-color: #090d16 !important;
+}
+
+body.trustward-app-body .btn-cta-primary {
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(2, 132, 199, 0.8) 50%, rgba(3, 105, 161, 0.95) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 4px 18px rgba(2, 132, 199, 0.35) !important;
+}
+
+body.trustward-app-body .btn-cta-primary:hover {
+  transform: scale(1.06) translateY(-2px) !important;
+  box-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.2) inset,
+    0 8px 26px rgba(2, 132, 199, 0.5) !important;
+}
+
+/* Off-White Inner Card Styles */
+body.trustward-app-body .inner-card-cell {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #090d16 !important;
+}
+
+body.trustward-app-body .charter-box {
+  background: #f1f5f9 !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+body.trustward-app-body .app-footer-auto {
+  border-top-color: #e2e8f0 !important;
+}
+
+body.trustward-app-body .app-footer-auto span {
+  color: #090d16 !important;
+}
+
+/* Metric / Stat Gauges */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.stat-box {
+  padding: 20px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--void-02) 85%, transparent);
+  border: 1px solid var(--void-05);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* Badges & Status */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-pill.approved {
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.status-pill.review {
+  background: rgba(251, 191, 36, 0.15);
+  color: var(--accent-amber);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.status-pill.disputed {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.status-pill.executed {
+  background: rgba(192, 132, 252, 0.15);
+  color: var(--accent-purple);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 10px var(--accent-emerald);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 14px var(--accent-emerald); }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Animations */
+.animate-fade-in {
+  animation: fadeIn 0.4s var(--ease-out) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
