@@ -13,8 +13,8 @@ def _safe_unlink(path, *args, **kwargs):
 os.unlink = _safe_unlink
 
 COMMIT_HASH = "a" * 40
-SOURCE_URL = f"https://raw.githubusercontent.com/ODbeke/trustward/{COMMIT_HASH}/contracts/WardedTargetV1.py"
-CANDIDATE_URL = f"https://raw.githubusercontent.com/ODbeke/trustward/{COMMIT_HASH}/contracts/WardedTargetV2.py"
+SOURCE_URL = f"https://raw.githubusercontent.com/Dark-Brain07/trustward/{COMMIT_HASH}/contracts/WardedTargetV1.py"
+CANDIDATE_URL = f"https://raw.githubusercontent.com/Dark-Brain07/trustward/{COMMIT_HASH}/contracts/WardedTargetV2.py"
 CHARTER = (
     "Only approve upgrades that preserve the declared storage layout, keep TrustWard as the sole upgrade "
     "authority, retain public reads, avoid value movement, and expose the stated version truthfully."

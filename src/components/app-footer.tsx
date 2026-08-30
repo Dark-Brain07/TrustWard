@@ -45,7 +45,7 @@ export function AppFooter() {
           <ExternalLink className="w-3 h-3" />
         </a>
         <a
-          href="https://github.com/ODbeke/trustward"
+          href="https://github.com/Dark-Brain07/trustward"
           target="_blank"
           rel="noreferrer"
           style={{ display: "inline-flex", alignItems: "center", gap: "4px", color: "var(--accent-cyan)", textDecoration: "none" }}

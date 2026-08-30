@@ -2,7 +2,7 @@
 
 [![Network](https://img.shields.io/badge/Network-GenLayer%20StudioNet-0284c7?style=flat-square)](https://studio.genlayer.com)
 [![Chain ID](https://img.shields.io/badge/Chain%20ID-61999-38bdf8?style=flat-square)](https://explorer-studio.genlayer.com)
-[![Contract](https://img.shields.io/badge/Contract-0x7b924F...59B5-10b981?style=flat-square)](https://explorer-studio.genlayer.com/address/0x7b924FC388EFB82e4BD856395f146dbAF78559B5)
+[![Contract](https://img.shields.io/badge/Contract-0x7b924F...59B5-10b981?style=flat-square)](https://explorer-studio.genlayer.com/address/0x34C1b813b00b15b14436C263004107c6e28740e6)
 [![Tests](https://img.shields.io/badge/Unit%20Tests-57%20Passed-emerald?style=flat-square)]()
 [![License](https://img.shields.io/badge/License-MIT-gray?style=flat-square)]()
 
@@ -18,7 +18,7 @@
 | **Chain ID** | 61999 |
 | **RPC Endpoint** | `https://studio.genlayer.com/api` |
 | **Explorer** | `https://explorer-studio.genlayer.com` |
-| **Deployed Controller Contract** | [`0x7b924FC388EFB82e4BD856395f146dbAF78559B5`](https://explorer-studio.genlayer.com/address/0x7b924FC388EFB82e4BD856395f146dbAF78559B5) |
+| **Deployed Controller Contract** | [`0x34C1b813b00b15b14436C263004107c6e28740e6`](https://explorer-studio.genlayer.com/address/0x34C1b813b00b15b14436C263004107c6e28740e6) |
 | **Verified Public Methods** | 17 Active Methods |
 | **Dispute Timelock Window** | 300 seconds (5 minutes) |
 | **Native Token** | `GEN` (18 Decimals) |

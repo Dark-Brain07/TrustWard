@@ -10,8 +10,8 @@ from gltest.utils import extract_contract_address
 
 CONTRACTS_DIR = Path(__file__).parents[2] / "contracts"
 COMMIT_HASH = "a" * 40
-V1_SOURCE_URL = f"https://raw.githubusercontent.com/ODbeke/trustward/{COMMIT_HASH}/contracts/WardedTargetV1.py"
-V2_SOURCE_URL = f"https://raw.githubusercontent.com/ODbeke/trustward/{COMMIT_HASH}/contracts/WardedTargetV2.py"
+V1_SOURCE_URL = f"https://raw.githubusercontent.com/Dark-Brain07/trustward/{COMMIT_HASH}/contracts/WardedTargetV1.py"
+V2_SOURCE_URL = f"https://raw.githubusercontent.com/Dark-Brain07/trustward/{COMMIT_HASH}/contracts/WardedTargetV2.py"
 CHARTER_TEXT = (
     "Only approve upgrades that preserve the declared storage layout, keep TrustWard as the sole upgrade "
     "authority, retain public reads, avoid value movement, and expose the stated version truthfully."

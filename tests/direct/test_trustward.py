@@ -116,14 +116,14 @@ def test_enrollment_rejects_mutable_github_source(trustward, direct_alice, direc
     # Verify target source URL must be commit-pinned (not branch-based like main)
     direct_vm.sender = direct_alice
     with direct_vm.expect_revert("must be a commit-pinned GitHub raw source link"):
-        trustward.enroll_target("warded-core", "Protocol Counter", CHARTER, "https://raw.githubusercontent.com/ODbeke/trustward/main/contracts/WardedTargetV1.py")
+        trustward.enroll_target("warded-core", "Protocol Counter", CHARTER, "https://raw.githubusercontent.com/Dark-Brain07/trustward/main/contracts/WardedTargetV1.py")
 
 
 def test_enrollment_rejects_short_commit_source(trustward, direct_alice, direct_vm):
     # Verify commit hash in source URL must be 40-character hexadecimal SHA
     direct_vm.sender = direct_alice
     with direct_vm.expect_revert("must be a commit-pinned GitHub raw source link"):
-        trustward.enroll_target("warded-core", "Protocol Counter", CHARTER, "https://raw.githubusercontent.com/ODbeke/trustward/abc/contracts/WardedTargetV1.py")
+        trustward.enroll_target("warded-core", "Protocol Counter", CHARTER, "https://raw.githubusercontent.com/Dark-Brain07/trustward/abc/contracts/WardedTargetV1.py")
 
 
 def test_submit_rejects_malformed_proposal_id_before_target_lookup(trustward, direct_alice, direct_vm):
@@ -137,7 +137,7 @@ def test_submit_rejects_non_pinned_candidate_before_target_lookup(trustward, dir
     # Verify candidate source URL must be commit-pinned raw GitHub URL
     direct_vm.sender = direct_alice
     with direct_vm.expect_revert("must be a commit-pinned GitHub raw source link"):
-        trustward.propose_upgrade("warded-v2", "missing", "https://raw.githubusercontent.com/ODbeke/trustward/main/contracts/WardedTargetV2.py", "v2", SUMMARY)
+        trustward.propose_upgrade("warded-v2", "missing", "https://raw.githubusercontent.com/Dark-Brain07/trustward/main/contracts/WardedTargetV2.py", "v2", SUMMARY)
 
 
 def test_submit_rejects_short_version_before_target_lookup(trustward, direct_alice, direct_vm):

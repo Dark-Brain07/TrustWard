@@ -31,10 +31,10 @@ export function TargetsPage() {
         {
           target_id: "warded-vault-core",
           name: "Treasury Vault Core",
-          target_address: "0x7b924FC388EFB82e4BD856395f146dbAF78559B5",
+          target_address: "0x34C1b813b00b15b14436C263004107c6e28740e6",
           admin_address: "0x4b785C66270E45E8FfEa4c5a967520e53a33979B",
           security_charter: "Only approve upgrades that preserve the declared storage layout, keep TrustWard as the sole upgrade authority, retain public reads, avoid value movement, and expose the stated version truthfully.",
-          baseline_code_url: "https://raw.githubusercontent.com/ODbeke/trustward/main/contracts/WardedTargetV1.py",
+          baseline_code_url: "https://raw.githubusercontent.com/Dark-Brain07/trustward/main/contracts/WardedTargetV1.py",
           baseline_digest: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
           active_release: "v1",
           registered_at: new Date().toISOString(),

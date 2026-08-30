@@ -33,7 +33,7 @@ export function ProposalsPage() {
           proposer: "0x4b785C66270E45E8FfEa4c5a967520e53a33979B",
           base_release: "v1",
           base_code_digest: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-          candidate_code_url: "https://raw.githubusercontent.com/ODbeke/trustward/main/contracts/WardedTargetV2.py",
+          candidate_code_url: "https://raw.githubusercontent.com/Dark-Brain07/trustward/main/contracts/WardedTargetV2.py",
           proposed_release: "v2",
           change_narrative: "Add a public addition method while retaining the existing storage layout, TrustWard controller authority, public read methods, and exposing a truthful version response.",
           stage: "APPROVED_DISPUTE_WINDOW",
