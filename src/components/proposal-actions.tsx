@@ -123,6 +123,30 @@ export function ProposalActions({
     }
   };
 
+  const handleAuditDispute = async () => {
+    if (!account) {
+      setError("Please connect your wallet first.");
+      return;
+    }
+    setIsLoading(true);
+    setError(null);
+    setSuccessMsg(null);
+    setActiveAction("audit_dispute");
+
+    try {
+      const hash = await executeTrustWardWrite(account, "audit_dispute", [proposal.proposal_id]);
+      setSuccessMsg(`Dispute audit requested! Tx: ${hash.slice(0, 14)}... Waiting for consensus...`);
+      await waitForTrustWardFinalization(account, hash);
+      setSuccessMsg("Dispute consensus audit complete and recorded on-chain!");
+      onActionComplete();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Dispute audit transaction failed");
+    } finally {
+      setIsLoading(false);
+      setActiveAction(null);
+    }
+  };
+
   return (
     <div style={{ marginTop: "16px", paddingTop: "16px", borderTop: "1px solid #e2e8f0" }}>
       {error && (
@@ -286,6 +310,27 @@ export function ProposalActions({
             <>
               <CheckCircle2 className="w-4 h-4" />
               <span>Verify & Finalize Upgrade Execution</span>
+            </>
+          )}
+        </button>
+      )}
+
+      {proposal.stage === "DISPUTED" && (
+        <button
+          onClick={handleAuditDispute}
+          disabled={isLoading}
+          className="btn-cta-primary"
+          style={{ width: "100%", padding: "10px 16px", fontSize: "13px" }}
+        >
+          {isLoading && activeAction === "audit_dispute" ? (
+            <>
+              <Loader2 className="w-4 h-4 animate-spin" />
+              <span>Running Dispute Consensus Audit...</span>
+            </>
+          ) : (
+            <>
+              <Flame className="w-4 h-4" />
+              <span>Trigger Dispute Consensus Audit</span>
             </>
           )}
         </button>
